@@ -1,84 +1,120 @@
+/* Сбрасывает все отступы и внутренние отступы для всех элементов, включая псевдо-элементы */
+*,
+*::after,
+*::before {
+  margin: 0; /* Убирает все внешние отступы у всех элементов */
+  padding: 0; /* Убирает все внутренние отступы у всех элементов */
+  box-sizing: inherit; /* Устанавливает для всех элементов правило box-sizing, унаследованное от родителя */
+}
+
 html {
-  font-size: 62.5%;
+  box-sizing: border-box; /* Устанавливает box-sizing как border-box для всей страницы, что означает, что отступы и границы будут учитываться в общей ширине и высоте элемента */
+  font-size: 62.5%; /* Устанавливает размер шрифта для html на 62.5% от стандартного (16px), что дает 10px для 1rem, упрощая расчет размеров с использованием rem */
 }
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.6rem;
+  color: #333;
+  font-weight: 300;
+  line-height: 1.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* Устанавливает шрифт для текста. Сначала пробует Verdana, если его нет — Geneva, затем Tahoma, и, если ни одного из них нет, используется системный шрифт sans-serif.*/
+  font-size: 1.6rem; /* Устанавливает размер шрифта как 1.6 rem (единица измерения, равная 16 пикселям на большинстве экранов). Это значение базируется на размере шрифта элемента <html>, который равен 10px, таким образом 1.6rem = 16px * 1.6 = 25.6px.*/
+  color: #333; /* Устанавливает цвет текста. #333 — это тёмно-серый цвет (почти черный), обычно используется для хорошей читаемости.*/
+  font-weight: 300; /* Устанавливает толщину шрифта. Значение 300 означает легкий вес шрифта, что делает текст менее жирным.*/
+  line-height: 1.6; /* Устанавливает высоту строки (межстрочный интервал). Значение 1.6 означает, что высота строки будет в 1.6 раза больше, чем высота шрифта, улучшая читаемость текста.*/
+}
+
+.container {
+  width: 60%; /* Устанавливает ширину контейнера на 60% от родительского элемента (обычно body) */
+  margin: 2rem auto; /* Устанавливает вертикальные отступы 2rem и горизонтальные отступы auto для центрирования контейнера */
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(7, 7vw);
-  grid-gap: 10px;
+  display: grid; /* Устанавливает контейнер как сетку */
+  grid-template-columns: repeat(6, 1fr); /* 6 равных колонок */
+  grid-template-rows: repeat(
+    7,
+    7vw
+  ); /* 7 строк, каждая высотой 7% от ширины экрана */
+  grid-gap: 10px; /* 10 пикселей между строками и колонками */
 }
 
-.gallery .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.gallery__img {
+  width: 100%; /* Устанавливает ширину изображений на 100% от ширины родительского контейнера */
+  height: 100%; /* Устанавливает высоту изображений на 100% от высоты родительского контейнера */
+  object-fit: cover; /* Обеспечивает, что изображение заполнило весь контейнер, сохраняя соотношение сторон, но часть изображения может быть обрезана */
+  display: block; /* Убирает возможные отступы или пробелы вокруг изображения, превращая его в блочный элемент */
 }
 
-.gallery .item_1 {
+.gallery__item--1 {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 5;
 }
 
-.gallery .item_2 {
+.gallery__item--2 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 5;
   grid-row-end: 6;
 }
 
-.gallery .item_3 {
+.gallery__item--3 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 6;
   grid-row-end: 7;
 }
 
-.gallery .item_4 {
+.gallery__item--4 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 7;
   grid-row-end: 8;
 }
 
-.gallery .item_5 {
+.gallery__item--5 {
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
 }
 
-.gallery .item_6 {
+.gallery__item--6 {
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 3;
   grid-row-end: 5;
 }
 
-.gallery .item_7 {
+.gallery__item--7 {
   grid-column-start: 5;
   grid-column-end: 7;
   grid-row-start: 1;
   grid-row-end: 6;
 }
 
-.gallery .item_8 {
+.gallery__item--8 {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 5;
   grid-row-end: 8;
 }
 
-.gallery .item_9 {
+.gallery__item--9 {
   grid-column-start: 5;
   grid-column-end: 7;
   grid-row-start: 6;
   grid-row-end: 8;
 }
+/*
+@media screen and (max-width: 425px) {
+  .gallery {
+  }
+}
+
+@media screen and (max-width: 766px) {
+}
+*/
